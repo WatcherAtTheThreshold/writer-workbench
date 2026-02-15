@@ -4,9 +4,18 @@ import { mdToHtml } from '../utils/markdown';
 import TTSControls from './TTSControls';
 import { getTTS } from '../utils/tts';
 
-export default function ManuscriptView({ folder, bookTitle }) {
+export default function ManuscriptView({ folder, bookTitle, selectedNode }) {
   const [highlightedSentence, setHighlightedSentence] = useState(null);
-  const chapters = useMemo(() => collectChaptersInOrder(folder), [folder]);
+  const allChapters = useMemo(() => collectChaptersInOrder(folder), [folder]);
+
+  // Filter to show only selected chapter if a chapter is selected
+  const chapters = useMemo(() => {
+    if (selectedNode?.type === 'chapter') {
+      return allChapters.filter(ch => ch.id === selectedNode.id);
+    }
+    return allChapters;
+  }, [allChapters, selectedNode]);
+
   const totalWords = useMemo(() => chapters.reduce((sum, ch) => sum + countWords(ch.content || ''), 0), [chapters]);
 
   // Combine all chapter content for TTS

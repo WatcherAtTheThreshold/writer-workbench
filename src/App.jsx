@@ -353,7 +353,11 @@ export default function WriterWorkbench() {
               />
             )}
             {view === 'Manuscript' && (
-              <ManuscriptView folder={currentBook || project.root} bookTitle={currentBook?.title} />
+              <ManuscriptView
+                folder={currentBook || project.root}
+                bookTitle={currentBook?.title}
+                selectedNode={selectedNode}
+              />
             )}
             {view === 'Split' && (
               <div className="grid grid-cols-2 h-full">
