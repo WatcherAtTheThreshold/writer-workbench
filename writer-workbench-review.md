@@ -1,4 +1,4 @@
-# Writer Workbench - Technical Patterns & Decisions
+# Writer Workbench - Technical Patterns & Decisions-
 
 > **Instructions:** Use this template when reviewing an app repo. Fill in each section as you analyze the codebase. Delete placeholder text and examples once filled.
 
